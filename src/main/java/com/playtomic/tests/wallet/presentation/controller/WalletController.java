@@ -1,4 +1,4 @@
-package com.playtomic.tests.wallet.api;
+package com.playtomic.tests.wallet.presentation.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

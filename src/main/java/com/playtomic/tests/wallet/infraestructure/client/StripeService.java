@@ -1,6 +1,8 @@
-package com.playtomic.tests.wallet.service;
+package com.playtomic.tests.wallet.infraestructure.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.playtomic.tests.wallet.domain.exception.StripeServiceException;
+import com.playtomic.tests.wallet.infraestructure.dto.Payment;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +44,7 @@ public class StripeService {
     }
 
     /**
-     * Charges money in the credit card.
+     * Charges money from the credit card into the wallet.
      *
      * Ignore the fact that no CVC or expiration date are provided.
      *
