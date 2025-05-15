@@ -1,6 +1,6 @@
-package com.playtomic.tests.wallet.infraestructure.client;
+package com.playtomic.tests.wallet.infrastructure.client;
 
-import com.playtomic.tests.wallet.infraestructure.exception.StripeAmountTooSmallException;
+import com.playtomic.tests.wallet.infrastructure.exception.StripeAmountTooSmallException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.ClientHttpResponse;

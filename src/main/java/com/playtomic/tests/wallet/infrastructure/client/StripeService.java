@@ -1,8 +1,8 @@
-package com.playtomic.tests.wallet.infraestructure.client;
+package com.playtomic.tests.wallet.infrastructure.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.playtomic.tests.wallet.infraestructure.exception.StripeServiceException;
-import com.playtomic.tests.wallet.infraestructure.dto.Payment;
+import com.playtomic.tests.wallet.infrastructure.exception.StripeServiceException;
+import com.playtomic.tests.wallet.infrastructure.dto.Payment;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Value;

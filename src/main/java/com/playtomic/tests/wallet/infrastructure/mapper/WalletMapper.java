@@ -1,4 +1,4 @@
-package com.playtomic.tests.wallet.application.mapper;
+package com.playtomic.tests.wallet.infrastructure.mapper;
 
 import com.playtomic.tests.wallet.domain.model.Wallet;
 import com.playtomic.tests.wallet.presentation.dto.CreateWalletRequest;

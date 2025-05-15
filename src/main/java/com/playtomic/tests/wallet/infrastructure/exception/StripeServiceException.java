@@ -1,4 +1,4 @@
-package com.playtomic.tests.wallet.infraestructure.exception;
+package com.playtomic.tests.wallet.infrastructure.exception;
 
 public class StripeServiceException extends RuntimeException {
 }

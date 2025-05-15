@@ -58,3 +58,29 @@ This endpoint creates a new wallet for a user. When creating the wallet, a uniqu
 #### **GET /wallet/{id}**
 
 This endpoint gets a wallet by its identifier if exists.
+
+### 3. Top-Up a Wallet
+
+#### **POST /wallet/top-up**
+
+This endpoint allows top-up a wallet using a simulated system.
+
+A TOP_UP transaction with status *PENDING* is created and a *TopUpRequestedEvent* is published. The event listener then attempts to charge the credit card via a simulated service. 
+* If the charge is successful, the transaction status is updated to *ACCEPTED*, and the wallet’s *balances* are updated. 
+* If the charge fails the transaction is updates as *FAILED*.
+
+To manage concurrency, wallet updates are wrapped in a @Retryable method with backoff functionality. If all retries fail due to optimistic locking (e.g., the wallet was modified by another thread), a @Recover method is triggered to mark the wallet as *INCONSISTENT* for later review. 
+
+In case the charge was already *ACCEPTED* but the wallet couldn’t be updated due to concurrency issues, a refund is issued and a *RefundRequestedEvent* is published, which will try to trigger a new *REFUND* transaction. 
+
+> Note: Optimistic locking is applied to the wallet but not to transaction for simplicity.
+
+##### Request Body
+
+```json
+{
+  "walletId": "string", //required
+  "total": 100, //required, positive
+  "creditCardNumber": "string" //required
+}
+```

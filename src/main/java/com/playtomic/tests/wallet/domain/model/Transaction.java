@@ -23,8 +23,6 @@ public class Transaction {
 
     private BigDecimal total;
 
-    private BigDecimal baseTotal;
-
     private TransactionType type;
 
     private TransactionStatus status;
@@ -44,8 +42,9 @@ public class Transaction {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date updatedAt;
 
+    private String failureReason;
+
     public Transaction() {
         this.id = UUID.randomUUID().toString();
     }
-
 }

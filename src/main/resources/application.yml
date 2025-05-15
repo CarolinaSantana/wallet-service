@@ -8,3 +8,9 @@ spring:
     uri: mongodb://localhost:27017/playtomic
 stripe.simulator.charges-uri: https://sandbox.playtomic.io/v1/stripe-simulator/charges
 stripe.simulator.refunds-uri: https://sandbox.playtomic.io/v1/stripe-simulator/payments/{payment_id}/refunds
+logging:
+  level:
+    com:
+      playtomic:
+        tests:
+          wallet: DEBUG

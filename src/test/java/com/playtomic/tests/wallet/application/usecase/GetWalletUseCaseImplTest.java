@@ -1,10 +1,10 @@
 package com.playtomic.tests.wallet.application.usecase;
 
-import com.playtomic.tests.wallet.application.mapper.WalletMapper;
+import com.playtomic.tests.wallet.infrastructure.mapper.WalletMapper;
 import com.playtomic.tests.wallet.application.usecase.impl.GetWalletUseCaseImpl;
-import com.playtomic.tests.wallet.domain.exception.DocumentNotFoundException;
+import com.playtomic.tests.wallet.infrastructure.exception.DocumentNotFoundException;
 import com.playtomic.tests.wallet.domain.model.Wallet;
-import com.playtomic.tests.wallet.domain.repository.WalletRepository;
+import com.playtomic.tests.wallet.infrastructure.repository.WalletRepository;
 import com.playtomic.tests.wallet.presentation.dto.WalletResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

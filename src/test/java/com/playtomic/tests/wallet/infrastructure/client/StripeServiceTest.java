@@ -1,8 +1,8 @@
-package com.playtomic.tests.wallet.infraestructure.client;
+package com.playtomic.tests.wallet.infrastructure.client;
 
 
-import com.playtomic.tests.wallet.infraestructure.exception.StripeAmountTooSmallException;
-import com.playtomic.tests.wallet.infraestructure.exception.StripeServiceException;
+import com.playtomic.tests.wallet.infrastructure.exception.StripeAmountTooSmallException;
+import com.playtomic.tests.wallet.infrastructure.exception.StripeServiceException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

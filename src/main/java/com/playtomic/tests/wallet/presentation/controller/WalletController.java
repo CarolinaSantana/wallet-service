@@ -2,7 +2,9 @@ package com.playtomic.tests.wallet.presentation.controller;
 
 import com.playtomic.tests.wallet.application.usecase.CreateWalletUseCase;
 import com.playtomic.tests.wallet.application.usecase.GetWalletUseCase;
+import com.playtomic.tests.wallet.application.usecase.TopUpWalletUseCase;
 import com.playtomic.tests.wallet.presentation.dto.CreateWalletRequest;
+import com.playtomic.tests.wallet.presentation.dto.TopUpWalletRequest;
 import com.playtomic.tests.wallet.presentation.dto.WalletResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +16,21 @@ public class WalletController {
 
     private final CreateWalletUseCase createWalletUseCase;
     private final GetWalletUseCase getWalletUseCase;
+    private final TopUpWalletUseCase topUpWalletUseCase;
 
     public WalletController(CreateWalletUseCase createWalletUseCase,
-                            GetWalletUseCase getWalletUseCase) {
+                            GetWalletUseCase getWalletUseCase,
+                            TopUpWalletUseCase topUpWalletUseCase) {
         this.createWalletUseCase = createWalletUseCase;
         this.getWalletUseCase = getWalletUseCase;
+        this.topUpWalletUseCase = topUpWalletUseCase;
     }
 
     /**
      * Creates a new wallet based on the provided request data
+     *
+     * @param request The information to associate to the new wallet
+     * @return The wallet information
      */
     @PostMapping
     public ResponseEntity<WalletResponse> createWallet(@Valid @RequestBody CreateWalletRequest request) {
@@ -34,6 +42,7 @@ public class WalletController {
      * Gets a wallet using its identifier
      *
      * @param id The wallet id
+     * @return The wallet information
      */
     @GetMapping("/{id}")
     public ResponseEntity<WalletResponse> getWallet(@PathVariable("id") String id) {
@@ -41,5 +50,16 @@ public class WalletController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * Top-up a wallet with a specific amount using a credit card.
+     *
+     * @param request The top-up request containing wallet ID, total, and credit card number
+     * @return The updated wallet information
+     */
+    @PostMapping("/top-up")
+    public ResponseEntity<WalletResponse> topUpWallet(@Valid @RequestBody TopUpWalletRequest request) {
+        WalletResponse response = topUpWalletUseCase.topUpWallet(request);
+        return ResponseEntity.ok(response);
+    }
 
 }
