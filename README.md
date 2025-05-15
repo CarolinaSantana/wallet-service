@@ -1,4 +1,4 @@
-# Wallets Service
+# Wallet Service
 In Playtomic, we have a service to manage our wallets. Our players can top-up their wallets using a credit card and spend that money on our platform (bookings, racket rentals, ...)
 
 That service has the following operations:
@@ -35,3 +35,26 @@ Consider that this service must work in a microservices environment in high avai
 You can spend as much time as you need but we think that 4 hours is enough to show [the requirements of this job.](OFFER.md)
 You don't have to document your code, but you can write down anything you want to explain or anything you have skipped.
 You don't need to write tests for everything, but we would like to see different types of tests.
+
+## Endpoints
+
+### 1. Create a Wallet
+
+#### **POST /wallet**
+
+This endpoint creates a new wallet for a user. When creating the wallet, a unique identifier (`id`) is assigned, initial balances of 0 and PENDING status are set.
+
+##### Request Body
+
+```json
+{
+  "alias": "string", //required
+  "userId": "string" //required
+}
+```
+
+### 2. Get a Wallet
+
+#### **GET /wallet/{id}**
+
+This endpoint gets a wallet by its identifier if exists.
