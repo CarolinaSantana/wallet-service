@@ -1,4 +1,4 @@
-package com.playtomic.tests.wallet.application;
+package com.playtomic.tests.wallet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

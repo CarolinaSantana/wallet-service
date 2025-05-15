@@ -10,7 +10,6 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -40,10 +39,10 @@ public class Transaction {
     private Integer version;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-    private OffsetDateTime createdAt;
+    private Date createdAt;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-    private OffsetDateTime updatedAt;
+    private Date updatedAt;
 
     public Transaction() {
         this.id = UUID.randomUUID().toString();

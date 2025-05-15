@@ -1,14 +1,16 @@
-package com.playtomic.tests.wallet.application;
+package com.playtomic.tests.wallet;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles(profiles = "test")
-public class WalletApplicationIT {
+@AutoConfigureMockMvc
+class WalletApplicationIT {
 
 	@Test
-	public void emptyTest() {
+	void emptyTest() {
 	}
 }

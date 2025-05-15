@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -32,14 +32,14 @@ public class Wallet {
     Long version;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-    private OffsetDateTime createdAt;
+    private Date createdAt;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-    private OffsetDateTime updatedAt;
+    private Date updatedAt;
 
     private String userId;
 
-    private Wallet() {
+    public Wallet() {
         this.id = UUID.randomUUID().toString();
     }
 }

@@ -1,16 +1,29 @@
 package com.playtomic.tests.wallet.presentation.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.playtomic.tests.wallet.application.usecase.CreateWalletUseCase;
+import com.playtomic.tests.wallet.presentation.dto.CreateWalletRequest;
+import com.playtomic.tests.wallet.presentation.dto.WalletResponse;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/wallet")
 public class WalletController {
-    private Logger log = LoggerFactory.getLogger(WalletController.class);
 
-    @RequestMapping("/")
-    void log() {
-        log.info("Logging from /");
+    private final CreateWalletUseCase createWalletUseCase;
+
+    public WalletController(CreateWalletUseCase createWalletUseCase) {
+        this.createWalletUseCase = createWalletUseCase;
     }
+
+    /**
+     * Creates a new wallet based on the provided request data
+     */
+    @PostMapping
+    public ResponseEntity<WalletResponse> createWallet(@Valid @RequestBody CreateWalletRequest request) {
+        WalletResponse response = createWalletUseCase.createWallet(request);
+        return ResponseEntity.ok(response);
+    }
+
 }

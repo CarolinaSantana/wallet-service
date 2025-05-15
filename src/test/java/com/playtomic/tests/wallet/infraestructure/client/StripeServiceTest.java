@@ -16,20 +16,20 @@ import java.net.URI;
  *
  * How would you test this?
  */
-public class StripeServiceTest {
+class StripeServiceTest {
 
     URI testUri = URI.create("http://how-would-you-test-me.localhost");
     StripeService s = new StripeService(testUri, testUri, new RestTemplateBuilder());
 
     @Test
-    public void test_exception() {
+    void test_exception() {
         Assertions.assertThrows(StripeAmountTooSmallException.class, () -> {
             s.charge("4242 4242 4242 4242", new BigDecimal(5));
         });
     }
 
     @Test
-    public void test_ok() throws StripeServiceException {
+    void test_ok() throws StripeServiceException {
         s.charge("4242 4242 4242 4242", new BigDecimal(15));
     }
 }
