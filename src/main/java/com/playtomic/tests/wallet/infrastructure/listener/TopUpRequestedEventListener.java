@@ -18,7 +18,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Component
@@ -48,7 +47,6 @@ public class TopUpRequestedEventListener {
     }
 
     @EventListener
-    @Transactional
     public void on(TopUpRequestedEvent event) {
 
         Wallet wallet = event.getWallet();

@@ -1,2 +1,4 @@
 spring.config.activate.on-profile: test
 de.flapdoodle.mongodb.embedded.version: 3.4.10
+stripe.simulator.charges-uri: http://localhost:9999
+stripe.simulator.refunds-uri: http://localhost:9999

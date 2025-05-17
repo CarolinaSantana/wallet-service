@@ -5,12 +5,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 @ActiveProfiles(profiles = "test")
 @AutoConfigureMockMvc
 class WalletApplicationIT {
 
 	@Test
-	void emptyTest() {
+	void contextLoads() {
+		assertTrue(true);
 	}
 }

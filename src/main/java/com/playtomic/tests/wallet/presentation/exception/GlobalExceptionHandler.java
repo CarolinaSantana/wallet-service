@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(StripeAmountTooSmallException.class)
     public ResponseEntity<Map<String, String>> handleStripeAmountTooSmallException(StripeAmountTooSmallException ex) {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                .body(Map.of("error", "The total can not be smaller than 10"));
+                .body(Map.of("error", "Total can not be smaller than 10"));
     }
 
     @ExceptionHandler(Exception.class)

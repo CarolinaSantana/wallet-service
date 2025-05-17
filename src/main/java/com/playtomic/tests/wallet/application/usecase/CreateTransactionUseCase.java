@@ -2,10 +2,10 @@ package com.playtomic.tests.wallet.application.usecase;
 
 import com.playtomic.tests.wallet.domain.enums.TransactionStatus;
 import com.playtomic.tests.wallet.domain.model.Transaction;
-import com.playtomic.tests.wallet.presentation.dto.TopUpWalletRequest;
+import com.playtomic.tests.wallet.presentation.dto.TransactionRequest;
 
 public interface CreateTransactionUseCase {
 
-    Transaction createTransaction(TopUpWalletRequest request, TransactionStatus status);
+    Transaction createTransaction(TransactionRequest request, TransactionStatus status);
 
 }

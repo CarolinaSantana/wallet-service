@@ -6,6 +6,7 @@ import com.playtomic.tests.wallet.domain.enums.TransactionStatus;
 import com.playtomic.tests.wallet.domain.model.Transaction;
 import com.playtomic.tests.wallet.infrastructure.repository.TransactionRepository;
 import com.playtomic.tests.wallet.presentation.dto.TopUpWalletRequest;
+import com.playtomic.tests.wallet.presentation.dto.TransactionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,13 @@ public class CreateTransactionUseCaseImpl implements CreateTransactionUseCase {
     private final TransactionMapper transactionMapper;
 
     @Override
-    public Transaction createTransaction(TopUpWalletRequest request, TransactionStatus status) {
-        Transaction transaction = transactionMapper.toTransaction(request);
-        transaction.setCreatedAt(new Date());
-
+    public Transaction createTransaction(TransactionRequest request, TransactionStatus status) {
+        Transaction transaction = new Transaction();
+        if (request instanceof TopUpWalletRequest topUpWalletRequest) {
+            transaction = transactionMapper.toTransaction(topUpWalletRequest);
+            transaction.setCreatedAt(new Date());
+        }
+        transaction.setStatus(status);
         return transactionRepository.save(transaction);
     }
 

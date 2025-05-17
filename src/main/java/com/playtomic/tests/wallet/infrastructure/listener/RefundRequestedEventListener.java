@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -37,7 +36,6 @@ public class RefundRequestedEventListener {
     }
 
     @EventListener
-    @Transactional
     public void on(RefundRequestedEvent event) {
 
         String walletId = event.getWalletId();

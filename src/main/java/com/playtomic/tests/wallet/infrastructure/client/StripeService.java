@@ -1,10 +1,11 @@
 package com.playtomic.tests.wallet.infrastructure.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.playtomic.tests.wallet.infrastructure.exception.StripeServiceException;
 import com.playtomic.tests.wallet.infrastructure.dto.Payment;
+import com.playtomic.tests.wallet.infrastructure.exception.StripeServiceException;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import java.net.URI;
 /**
  * Handles the communication with Stripe.
  *
- * A real implementation would call to String using their API/SDK.
+ * A real implementation would call to Stripe using their API/SDK.
  * This dummy implementation throws an error when trying to charge less than 10€.
  */
 @Service
@@ -32,6 +33,7 @@ public class StripeService {
     @NonNull
     private RestTemplate restTemplate;
 
+    @Autowired
     public StripeService(@Value("${stripe.simulator.charges-uri}") @NonNull URI chargesUri,
                          @Value("${stripe.simulator.refunds-uri}") @NonNull URI refundsUri,
                          @NonNull RestTemplateBuilder restTemplateBuilder) {
@@ -41,6 +43,14 @@ public class StripeService {
                 restTemplateBuilder
                 .errorHandler(new StripeRestTemplateResponseErrorHandler())
                 .build();
+    }
+
+    public StripeService(@NonNull URI chargesUri,
+                         @NonNull URI refundsUri,
+                         @NonNull RestTemplate restTemplate) {
+        this.chargesUri = chargesUri;
+        this.refundsUri = refundsUri;
+        this.restTemplate = restTemplate;
     }
 
     /**
